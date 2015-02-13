@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+function driveby() {
+  lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill
+  printf "Killed everything on port $1\n"
+}
